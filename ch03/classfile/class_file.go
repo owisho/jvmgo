@@ -49,11 +49,24 @@ func (self *ClassFile) read(reader *ClassReader) {
 }
 
 func (self *ClassFile) readAndCheckMagic(reader *ClassReader) {
-	
+	magic := reader.readUnit32()
+	if magic != 0xCAFEBABE {
+		panic("java.lang.ClassFormatError: magic!")
+	}
 }
 
 func (self *ClassFile) readAndCheckVersion(reader *ClassReader) {
-	
+	self.minorVersion = reader.readUnit16()
+	self.majorVersion = reader.readUnit16()
+	switch self.majorVersion{
+	case 45:
+		return
+	case 46,47,48,49,50,51,52:
+		if self.minorVersion==0{
+			return 
+		}
+	}	
+	panic("java.lang.UnsupportedClassVersionError!")
 }
 
 func (self *ClassFile) MinorVersion() uint16 {
