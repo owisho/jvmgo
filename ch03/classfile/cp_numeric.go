@@ -9,8 +9,8 @@ type ConstantIntegerInfo struct {
 }
 
 func (self *ConstantIntegerInfo) readInfo(reader *ClassReader) {
-	bytes := reader.readUnit32()
-	self.val =int32(bytes)
+	bytes := reader.readUint32()
+	self.val = int32(bytes)
 }
 
 type ConstantFloatInfo struct {
@@ -18,7 +18,7 @@ type ConstantFloatInfo struct {
 }
 
 func (self *ConstantFloatInfo) readInfo(reader *ClassReader) {
-	bytes := reader.readUnit32()
+	bytes := reader.readUint32()
 	self.val = math.Float32frombits(bytes)
 }
 
@@ -27,7 +27,7 @@ type ConstantLongInfo struct {
 }
 
 func (self *ConstantLongInfo) readInfo(reader *ClassReader) {
-	bytes := reader.readUnit64()
+	bytes := reader.readUint64()
 	self.val = int64(bytes)
 }
 
@@ -36,6 +36,6 @@ type ConstantDoubleInfo struct {
 }
 
 func (self *ConstantDoubleInfo) readInfo(reader *ClassReader) {
-	bytes := reader.readUnit64()
+	bytes := reader.readUint64()
 	self.val = math.Float64frombits(bytes)
 }
