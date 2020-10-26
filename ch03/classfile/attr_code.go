@@ -29,6 +29,12 @@ func readExceptionTable(reader *ClassReader) []*ExceptionTableEntry {
 	exceptionTableLength := reader.readUint16()
 	exceptionTable := make([]*ExceptionTableEntry, exceptionTableLength)
 	for i := range exceptionTable {
-		exceptionTable[i] = &ExceptionTableEntry{}
+		exceptionTable[i] = &ExceptionTableEntry{
+			startPc : reader.readUint16(),
+			endPc : reader.readUint16(),
+			handlerPc : reader.readUint16(),
+			catchType : reader.readUint16(),
+		}
 	}
+	return exceptionTable
 }
