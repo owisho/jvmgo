@@ -1,13 +1,13 @@
 package classfile
 
-type ExceptionsAttributes struct {
+type ExceptionsAttribute struct {
 	exceptionIndexTable []uint16
 }
 
-func (self *ExceptionsAttributes) readInfo(reader *ClassReader) {
+func (self *ExceptionsAttribute) readInfo(reader *ClassReader) {
 	self.exceptionIndexTable = reader.readUint16s()
 }
 
-func (self *ExceptionsAttributes) ExceptionIndexTable() []uint16 {
+func (self *ExceptionsAttribute) ExceptionIndexTable() []uint16 {
 	return self.exceptionIndexTable
 }

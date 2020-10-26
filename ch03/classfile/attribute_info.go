@@ -31,11 +31,11 @@ func newAttributeInfo(attrName string, attrLen uint32, cp ConstantPool) Attribut
 	case "Deprecated":
 		return &DeprecatedAttribute{}
 	case "Exceptions":
-		return &ExceptionAttribute{}
+		return &ExceptionsAttribute{}
 	case "LineNumberTable":
 		return &LineNumberTableAttribute{}
 	case "LocalVriableTable":
-		return &LocalVriableTableAttribute{}
+		return &LocalVariableTableAttribute{}
 	case "SourceFile":
 		return &SourceFileAttribute{cp: cp}
 	case "Synthetic":
